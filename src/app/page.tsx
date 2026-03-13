@@ -1,3 +1,9 @@
+import { ExampleView } from '@/components/ui';
+
 export default function Home() {
-  return <main>Hello, World!</main>;
+  return (
+    <main>
+      <ExampleView />
+    </main>
+  );
 }
