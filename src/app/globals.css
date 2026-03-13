@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+:root {
+    font-size: 10px;
+}
+
+body {
+    font-size: 2.0rem;
+}
