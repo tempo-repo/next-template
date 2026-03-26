@@ -11,7 +11,10 @@ import { Constants } from '@/constants';
  *
  * @example
  * export async function generateMetadata(): Promise<Metadata> {
- *   return (await SEOBuilder.create()).build();
+ *   return (await SEOBuilder.create())
+ *     .title('Welcome!')
+ *     .description(undefined)
+ *     .build();
  * }
  */
 export class SEOBuilder {
