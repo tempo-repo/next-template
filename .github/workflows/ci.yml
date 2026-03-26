@@ -1,0 +1,34 @@
+name: "Repo CI flow"
+
+on:
+  push:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        NODE_VERSION: ["20", "22", "24"]
+    runs-on: ubuntu-latest
+    name: "build-for-node-${{ matrix.NODE_VERSION }}"
+    permissions:
+      contents: read
+    steps:
+      - name: "✅ Checkout the repo"
+        uses: actions/checkout@v4
+
+      - name: "🧩 Install Node.js v${{ matrix.NODE_VERSION }}"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "${{ matrix.NODE_VERSION }}"
+
+      - name: "🐱 Install Yarn (if needed)"
+        run: |
+          if ! command -v yarn &> /dev/null; then
+            npm i -g yarn
+            echo "📦 Installed Yarn to runner" 
+          fi
+
+      - name: "📦 Install dependencies"
+        run: yarn install --frozen-lockfile
