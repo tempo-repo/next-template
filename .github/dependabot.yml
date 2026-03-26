@@ -10,6 +10,7 @@ updates:
         dependency-type: "production"
       development-deps:
         dependency-type: "development"
+        update-types: ["major", "minor"]
     open-pull-requests-limit: 15
     pull-request-branch-name:
       separator: "-"
