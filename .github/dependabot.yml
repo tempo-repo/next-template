@@ -5,6 +5,11 @@ updates:
     schedule:
       interval: "cron"
       cronjob: "0 12 1,15 * *"
+    groups:
+      production-deps:
+        dependency-type: "production"
+      development-deps:
+        dependency-type: "development"
     open-pull-requests-limit: 15
     pull-request-branch-name:
       separator: "-"
