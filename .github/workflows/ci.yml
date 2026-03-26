@@ -34,7 +34,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: "📕 Linting"
-        run: yarn eslint --max-warnings=0
+        run: yarn lint --max-warnings=0
 
       - name: "🧪 Run coverage"
         run: yarn vitest run --coverage
