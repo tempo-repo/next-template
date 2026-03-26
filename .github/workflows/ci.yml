@@ -6,12 +6,12 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  ci:
     strategy:
       matrix:
         NODE_VERSION: ["20", "22", "24"]
     runs-on: ubuntu-latest
-    name: "build-for-node-${{ matrix.NODE_VERSION }}"
+    name: "ci-node-${{ matrix.NODE_VERSION }}"
     permissions:
       contents: read
     steps:
