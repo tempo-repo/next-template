@@ -12,10 +12,14 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+    'coverage',
   ]),
   {
     rules: {
       '@typescript-eslint/no-namespace': 'off',
+
+      // Configure typescript-eslint
+      '@typescript-eslint/consistent-type-imports': 'error',
     },
   },
 ]);
