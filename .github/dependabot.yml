@@ -7,6 +7,7 @@ updates:
       cronjob: "0 12 1,15 * *"
     ignore:
       - dependency-name: "*eslint*"
+      - dependency-name: "*storybook*"
     groups:
       production-deps:
         dependency-type: "production"
