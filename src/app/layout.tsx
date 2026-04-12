@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { SEOBuilder } from '@/utils/seo';
 
 import './globals.scss';
+import GlobalProviders from './providers';
 
 export async function generateMetadata(): Promise<Metadata> {
   return (await SEOBuilder.create())
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body>
+        <GlobalProviders>{children}</GlobalProviders>
+      </body>
     </html>
   );
 }
