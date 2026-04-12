@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import type { CSSProperties, ElementType } from 'react';
 
 import type { LimitedContainerProps } from './LimitedContainer.props';
+import { limitedContainerVariants } from './LimitedContainer.variants';
 
 export function LimitedContainer<
   AsType extends ElementType<{
@@ -14,6 +15,7 @@ export function LimitedContainer<
   insets = '2.5rem',
   className,
   style,
+  align,
   ...props
 }: LimitedContainerProps<AsType>) {
   // Default element type is section.
@@ -21,10 +23,17 @@ export function LimitedContainer<
   return (
     <Element
       style={{
-        width: `min(${maxSize}, calc(100% - 2 * ${insets}))`,
+        '--max-size': maxSize,
+        '--insets': insets,
+        width: `min(var(--max-size), calc(100% - 2 * var(--insets)))`,
         ...style,
       }}
-      className={clsx(className)}
+      className={clsx(
+        limitedContainerVariants({
+          align,
+        }),
+        className,
+      )}
       {...props}
     />
   );
