@@ -31,7 +31,8 @@ export class SEOBuilder {
     statusBarStyle: 'default',
     title: Constants.APP_DEFAULT_TITLE,
   };
-  private _og: OpenGraph.Config = Constants.SHARED_OG_CONFIG;
+  private _og: OpenGraph.Config =
+    Constants.SHARED_OG_CONFIG as OpenGraph.Config;
 
   private constructor({ headers }: SEOBuilderProps) {
     // Setup canonical URL
