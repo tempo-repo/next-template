@@ -5,7 +5,11 @@ import { SEOBuilder } from '@/utils/seo';
 import './globals.css';
 
 export async function generateMetadata(): Promise<Metadata> {
-  return (await SEOBuilder.create()).build();
+  return (await SEOBuilder.create())
+    .openGraph({
+      overrideImages: false,
+    })
+    .build();
 }
 
 export default function RootLayout({

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { OpenGraph as OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types';
 import { headers } from 'next/headers';
 
 import { Constants } from '@/constants';
@@ -31,8 +32,7 @@ export class SEOBuilder {
     statusBarStyle: 'default',
     title: Constants.APP_DEFAULT_TITLE,
   };
-  private _og: OpenGraph.Config =
-    Constants.SHARED_OG_CONFIG as OpenGraph.Config;
+  private _og: OpenGraph.Config | undefined = undefined;
 
   private constructor({ headers }: SEOBuilderProps) {
     // Setup canonical URL
@@ -65,6 +65,32 @@ export class SEOBuilder {
     return this;
   }
 
+  openGraph({
+    overrideImages,
+    title,
+    description,
+    images,
+  }: OpenGraphOptions): SEOBuilder {
+    const newConfig: OpenGraph.Config = {
+      ...Constants.SHARED_OG_CONFIG,
+
+      images: [
+        ...(overrideImages ? [] : Constants.SHARED_OG_CONFIG.images),
+        ...(images || []),
+      ] as NonNullable<OpenGraphType['images']>,
+
+      type: 'website',
+      siteName: Constants.APP_NAME,
+      title: title || {
+        default: Constants.APP_DEFAULT_TITLE,
+        template: Constants.APP_TITLE_TEMPLATE,
+      },
+      description: description || Constants.APP_DESCRIPTION,
+    };
+    this._og = newConfig;
+    return this;
+  }
+
   build(): Metadata {
     return {
       applicationName: this._applicationName,
@@ -90,3 +116,11 @@ type SEOBuilderType = Awaited<ReturnType<(typeof SEOBuilder)['create']>>;
 interface SEOBuilderProps {
   headers: [key: string, value: string][];
 }
+
+type OpenGraphOptions = Pick<OpenGraph.Config, 'title' | 'description'> & {
+  // If true, default OG images will be dropped.
+  overrideImages: boolean;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  images?: Extract<OpenGraph.Config, Array<any>>;
+};
