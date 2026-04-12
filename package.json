@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "vitest": "vitest --config ./configs/vitest.config.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "next": "^16.2.3",
@@ -37,7 +39,10 @@
     "type-fest": "^5.5.0",
     "typescript": "^5",
     "vitest": "^4.1.4",
-    "vite": "^8.0.8"
+    "vite": "^8.0.8",
+    "storybook": "^10.3.5",
+    "@storybook/nextjs-vite": "^10.3.5",
+    "eslint-plugin-storybook": "^10.3.5"
   },
   "packageManager": "yarn@1.22.22"
 }
