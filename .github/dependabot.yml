@@ -5,6 +5,8 @@ updates:
     schedule:
       interval: "cron"
       cronjob: "0 12 1,15 * *"
+    ignore:
+      - pattern: "*eslint*"
     groups:
       production-deps:
         dependency-type: "production"
