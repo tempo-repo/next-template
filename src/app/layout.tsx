@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { SEOBuilder } from '@/utils/seo';
 
-import './globals.css';
+import './globals.scss';
 
 export async function generateMetadata(): Promise<Metadata> {
   return (await SEOBuilder.create())
