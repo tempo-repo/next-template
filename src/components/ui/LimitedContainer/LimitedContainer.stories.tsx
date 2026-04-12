@@ -11,6 +11,12 @@ const meta = {
   parameters: {
     // layout: 'centered',
   },
+  argTypes: {
+    align: {
+      control: { type: 'select' },
+      options: ['start', 'center', 'end'],
+    },
+  },
 } satisfies Meta<typeof LimitedContainer>;
 
 export default meta;
@@ -20,6 +26,7 @@ const builder = new StoryBuilder<typeof LimitedContainer>()
   .defineSharedProps({
     className: 'bg-red-500',
     children: <p>Container</p>,
+    align: 'center',
   });
 
 export const Base = builder.buildStory({});
