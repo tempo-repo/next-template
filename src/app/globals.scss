@@ -7,3 +7,15 @@
 body {
     font-size: 2.0rem;
 }
+
+@theme {
+  --color-primary-bg: white;
+  --color-primary-font: black;
+}
+
+@layer theme {
+  [data-theme="dark"] {
+    --color-primary-bg: black;
+    --color-primary-font: white;
+  }
+}
