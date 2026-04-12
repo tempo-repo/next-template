@@ -1,10 +1,10 @@
-import { Metadata } from 'next';
-import { Merge, RequiredDeep } from 'type-fest';
+import type { Metadata } from 'next';
+import type { Merge, RequiredDeep } from 'type-fest';
 
 /**
  * This namespace contains all types associated to OpenGraph configuration.
  */
-// eslint-disable-next-line @typescript-eslint/no-namespace
+ 
 export namespace OpenGraph {
   // Matches configuration type from Next.js config.
   export type Config = NonNullable<Metadata['openGraph']>;
