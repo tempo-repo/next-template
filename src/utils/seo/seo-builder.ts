@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 
 import { Constants } from '@/constants';
+import type { OpenGraph } from '@/types';
 
 /**
  * Generates proper SEO config for pages.
@@ -30,6 +31,7 @@ export class SEOBuilder {
     statusBarStyle: 'default',
     title: Constants.APP_DEFAULT_TITLE,
   };
+  private _og: OpenGraph.Config = Constants.SHARED_OG_CONFIG;
 
   private constructor({ headers }: SEOBuilderProps) {
     // Setup canonical URL
@@ -72,8 +74,7 @@ export class SEOBuilder {
       formatDetection: {
         telephone: false,
       },
-      // TODO Implement OG
-      openGraph: undefined,
+      openGraph: this._og,
       twitter: {
         card: 'summary',
         title: this._title,
