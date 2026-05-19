@@ -4,5 +4,5 @@ services:
   frontend:
     build: .
     container_name: nextjs-app-frontend
-    environment:
+    ports:
       - "${PORT:-3000}:3000"
