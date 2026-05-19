@@ -1,4 +1,4 @@
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from '@teispace/next-themes';
 import type { PropsWithChildren } from 'react';
 
 import { Constants } from '@/constants';
@@ -9,7 +9,7 @@ export default function GlobalProviders({ children }: PropsWithChildren) {
   return (
     <ThemeProvider
       attribute='class'
-      storageKey={`${Constants.APP_NAME} Theme`}
+      storageKey={Constants.APP_THEME_KEY}
       enableSystem
     >
       <RQProvider>{children}</RQProvider>

@@ -12,6 +12,10 @@ export namespace Constants {
   export const APP_TITLE_TEMPLATE = `%s - ${Constants.APP_NAME}`;
   export const APP_DESCRIPTION = 'Generated from next-template';
 
+  export const APP_THEME_KEY = ((): string => {
+    return Constants.APP_NAME.toLowerCase().replace(/\W/, '-').concat('-theme');
+  })();
+
   export const SHARED_OG_CONFIG = {
     images: [
       {

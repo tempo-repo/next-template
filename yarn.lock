@@ -1208,6 +1208,11 @@
   dependencies:
     "@tanstack/query-core" "5.100.11"
 
+"@teispace/next-themes@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@teispace/next-themes/-/next-themes-0.5.0.tgz#4994e868200ded8d253ba67cc6073385e150f9f2"
+  integrity sha512-Y/wijExDhEGmEbL3r8cDdTRsamOHxkDPJG78pqDJEqT6u35tlazC0qrwUXcRHz59YXzjlvyfQSRCIbuo5dGUiA==
+
 "@testing-library/dom@^10.4.1":
   version "10.4.1"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-10.4.1.tgz#d444f8a889e9a46e9a3b4f3b88e0fcb3efb6cf95"
@@ -3856,11 +3861,6 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
-
-next-themes@^0.4.6:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.4.6.tgz#8d7e92d03b8fea6582892a50a928c9b23502e8b6"
-  integrity sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==
 
 next@^16.2.6:
   version "16.2.6"

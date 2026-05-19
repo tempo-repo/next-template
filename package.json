@@ -18,11 +18,11 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.100.11",
+    "@teispace/next-themes": "^0.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "deepmerge": "^4.3.1",
     "next": "^16.2.6",
-    "next-themes": "^0.4.6",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "zod": "^4.4.3"
