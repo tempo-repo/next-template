@@ -1,32 +1,27 @@
-FROM node:20-alpine AS base
+FROM node:22.22.1-alpine AS base
+ENV NODE_ENV=production
+WORKDIR /app
 
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
-WORKDIR /app
 COPY package.json yarn.lock* ./
-RUN yarn --frozen-lockfile
+RUN NODE_ENV=development yarn --frozen-lockfile
 
 FROM base AS builder
-WORKDIR /app
+COPY ./src ./src
+COPY ./public ./public
+COPY package.json yarn.lock* ./
+COPY tsconfig* postcss.config.mjs next.config.ts ./
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN yarn run build
+RUN NODE_OPTIONS=--max-old-space-size=8192 yarn run build
 
 FROM base AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3000
 ENV PORT=3000
-
 ENV HOSTNAME="0.0.0.0"
-CMD ["node", "server.js"]
+CMD ["tail", "-f", "/dev/null"]
