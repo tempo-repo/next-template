@@ -3,6 +3,8 @@ import type { PropsWithChildren } from 'react';
 
 import { Constants } from '@/constants';
 
+import RQProvider from './RQProvider';
+
 export default function GlobalProviders({ children }: PropsWithChildren) {
   return (
     <ThemeProvider
@@ -10,7 +12,7 @@ export default function GlobalProviders({ children }: PropsWithChildren) {
       storageKey={`${Constants.APP_NAME} Theme`}
       enableSystem
     >
-      {children}
+      <RQProvider>{children}</RQProvider>
     </ThemeProvider>
   );
 }
