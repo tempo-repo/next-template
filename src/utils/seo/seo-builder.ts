@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import type { OpenGraph as OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types';
-import { headers } from 'next/headers';
 
 import { Constants } from '@/constants';
 import type { OpenGraph } from '@/types';
+import { env } from '@/utils/env';
 
 /**
  * Generates proper SEO config for pages.
@@ -34,20 +34,8 @@ export class SEOBuilder {
   };
   private _og: OpenGraph.Config | undefined = undefined;
 
-  private constructor({ headers }: SEOBuilderProps) {
-    // Setup canonical URL
-    const headersMap = new Map<string, string>(headers);
-    const host: string = headersMap.get('host') ?? 'localhost:3000';
-    const protocol: string =
-      headersMap.get('x-forwarded-proto') ||
-      (host?.includes('localhost') ? 'http' : 'https');
-    this._canonical = `${protocol}://${host}`;
-  }
-
-  static async create(): Promise<SEOBuilder> {
-    return new SEOBuilder({
-      headers: (await headers()).entries().toArray(),
-    });
+  constructor() {
+    this._canonical = env.CANONICAL_URL;
   }
 
   title(newTitle: SEOBuilderType['_title']): SEOBuilder {
@@ -111,16 +99,15 @@ export class SEOBuilder {
   }
 }
 
-type SEOBuilderType = Awaited<ReturnType<(typeof SEOBuilder)['create']>>;
-
-interface SEOBuilderProps {
-  headers: [key: string, value: string][];
-}
+type SEOBuilderType = InstanceType<typeof SEOBuilder>;
 
 type OpenGraphOptions = Pick<OpenGraph.Config, 'title' | 'description'> & {
-  // If true, default OG images will be dropped.
+  /** If true, default OG images will be dropped. */
   overrideImages: boolean;
 
+  /**
+   * Select which images to display as OG.
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   images?: Extract<OpenGraph.Config, Array<any>>;
 };

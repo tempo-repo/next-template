@@ -6,7 +6,7 @@ import './globals.scss';
 import GlobalProviders from './providers';
 
 export async function generateMetadata(): Promise<Metadata> {
-  return (await SEOBuilder.create())
+  return new SEOBuilder()
     .openGraph({
       overrideImages: false,
     })
