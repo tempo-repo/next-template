@@ -9,7 +9,12 @@ export default defineConfig({
       provider: 'istanbul',
       reporter: ['text', 'json', 'json-summary', 'html'],
       include: ['./src/**/*.{ts,js,tsx,jsx}'],
-      exclude: ['**/*.{stories,variants}.*', './src/stories/*'],
+      exclude: [
+        '**/*.{stories,variants}.*',
+        './src/stories/*',
+        // TODO Maybe, should add routing files to coverage report...
+        '**/{page,layout}.tsx',
+      ],
     },
   },
   resolve: {
