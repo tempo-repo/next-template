@@ -1,7 +1,7 @@
 'use client';
 
-import { useTheme } from '@teispace/next-themes';
 import clsx from 'clsx';
+import { useTheme } from 'next-themes';
 import type { FC } from 'react';
 
 import type { ExampleViewProps } from './ExampleView.props';

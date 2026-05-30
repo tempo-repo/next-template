@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@teispace/next-themes';
+import { ThemeProvider } from 'next-themes';
 import type { PropsWithChildren } from 'react';
 
 import { Constants } from '@/constants';

@@ -3,7 +3,6 @@ import type { OpenGraph as OpenGraphType } from 'next/dist/lib/metadata/types/op
 
 import { Constants } from '@/constants';
 import type { OpenGraph } from '@/types';
-import { env } from '@/utils/env';
 
 /**
  * Generates proper SEO config for pages.
@@ -35,7 +34,7 @@ export class SEOBuilder {
   private _og: OpenGraph.Config | undefined = undefined;
 
   constructor() {
-    this._canonical = env.CANONICAL_URL;
+    this._canonical = process.env.NEXT_PUBLIC_CANONICAL_URL!;
   }
 
   title(newTitle: SEOBuilderType['_title']): SEOBuilder {
