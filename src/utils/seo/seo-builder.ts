@@ -81,7 +81,6 @@ export class SEOBuilder {
   build(): Metadata {
     return {
       applicationName: this._applicationName,
-      metadataBase: new URL(this._canonical),
       title: this._title,
       description: this._description,
       appleWebApp: this._appleWebApp,
