@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { OpenGraph as OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types';
 
 import { Constants } from '@/constants';
+import env from '@/env';
 import type { OpenGraph } from '@/types';
 
 /**
@@ -20,6 +21,7 @@ import type { OpenGraph } from '@/types';
  */
 export class SEOBuilder {
   private _applicationName: string = Constants.APP_NAME;
+  private readonly _canonical: string;
   private _title: NonNullable<Metadata['title']> = {
     default: Constants.APP_NAME,
     template: Constants.APP_TITLE_TEMPLATE,
@@ -31,6 +33,10 @@ export class SEOBuilder {
     title: Constants.APP_DEFAULT_TITLE,
   };
   private _og: OpenGraph.Config | undefined = undefined;
+
+  constructor() {
+    this._canonical = env.NEXT_PUBLIC_CANONICAL_URL;
+  }
 
   title(newTitle: SEOBuilderType['_title']): SEOBuilder {
     this._title = newTitle;
@@ -77,6 +83,7 @@ export class SEOBuilder {
     return {
       applicationName: this._applicationName,
       title: this._title,
+      metadataBase: new URL(this._canonical),
       description: this._description,
       appleWebApp: this._appleWebApp,
       formatDetection: {
