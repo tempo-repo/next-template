@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import type { FC } from 'react';
 
+import styles from './ExampleView.module.scss';
 import type { ExampleViewProps } from './ExampleView.props';
 import type { ExampleViewVariantsType } from './ExampleView.variants';
 import { exampleViewVariants } from './ExampleView.variants';
@@ -21,6 +22,7 @@ export const ExampleView: FC<ExampleViewProps & ExampleViewVariantsType> = ({
           exampleViewVariants({
             variant,
           }),
+          styles.view,
         )}
       >
         Hello, {message}!
