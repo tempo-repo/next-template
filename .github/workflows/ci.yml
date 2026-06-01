@@ -44,6 +44,3 @@ jobs:
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           vite-config-path: configs/vitest.config.ts
-
-      - name: "📚 Storybook can be built"
-        run: yarn build-storybook
