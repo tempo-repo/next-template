@@ -10,3 +10,4 @@
 # User related stuff
 modules.xml
 *.iml
+compiler.xml
