@@ -10,8 +10,12 @@
 }
 
 @layer theme {
-  [data-theme="dark"] {
+  html.dark {
     --color-primary-bg: black;
     --color-primary-font: white;
   }
+}
+
+body {
+  @apply bg-primary-bg text-primary-font;
 }
