@@ -13,7 +13,8 @@ export default defineConfig({
         '**/*.{stories,variants}.*',
         './src/stories/*',
         // TODO Maybe, should add routing files to coverage report...
-        '**/{page,layout}.tsx',
+        '**/{page,layout,route}.tsx',
+        '**/{loading,error,not-found}.tsx',
       ],
     },
   },
