@@ -20,7 +20,6 @@ import type { OpenGraph } from '@/types';
  */
 export class SEOBuilder {
   private _applicationName: string = Constants.APP_NAME;
-  private readonly _canonical: string;
   private _title: NonNullable<Metadata['title']> = {
     default: Constants.APP_NAME,
     template: Constants.APP_TITLE_TEMPLATE,
@@ -32,10 +31,6 @@ export class SEOBuilder {
     title: Constants.APP_DEFAULT_TITLE,
   };
   private _og: OpenGraph.Config | undefined = undefined;
-
-  constructor() {
-    this._canonical = process.env.NEXT_PUBLIC_CANONICAL_URL!;
-  }
 
   title(newTitle: SEOBuilderType['_title']): SEOBuilder {
     this._title = newTitle;
