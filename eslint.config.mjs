@@ -16,6 +16,7 @@ const eslintConfig = defineConfig([
     'next-env.d.ts',
     'coverage',
     'src/stories/**',
+    'storybook-static/**',
   ]),
   {
     rules: {
