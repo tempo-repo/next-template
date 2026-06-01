@@ -35,6 +35,7 @@ jobs:
 
       - name: "🔨 App can be built"
         run: |
+          echo "NEXT_PUBLIC_CANONICAL_URL=\"http://localhost:3000\"" >> .env
           yarn build
 
       - name: "📕 Linting"
