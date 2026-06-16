@@ -3,9 +3,11 @@ import c from 'ansi-colors';
 import axios from 'axios';
 import deepmerge from 'deepmerge';
 import { readFileSync } from 'node:fs';
-import { readdir } from 'node:fs/promises';
+import * as fs from 'node:fs';
+import { readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { PackageJson } from 'type-fest';
+import YAML from 'yaml';
 import { z } from 'zod';
 
 import { DevLogger, writePackageJson } from '@scripts/impl';
@@ -108,6 +110,13 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
     );
     return;
   }
+  // Get all versions presented in semver
+  const individualVersions = collapsedSemver
+    .matchAll(/((\^|>=)(\d+\.*)+)/g)
+    .map(arr => arr.at(0))
+    .toArray()
+    .filter(v => v !== undefined)
+    .map(v => v.replace(/(\^|>=)/g, ''));
 
   await writePackageJson(path.join(process.cwd(), './package.json'), prev => {
     if (prev.engines?.node !== collapsedSemver) {
@@ -123,7 +132,7 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
         ),
       );
     } else {
-      DevLogger.warn(c.yellow('Nothing changed.'));
+      DevLogger.warn(c.yellow('package.json is in sync already.'));
     }
 
     return deepmerge(prev, {
@@ -132,6 +141,20 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
       },
     });
   });
+
+  // Updating CI file
+  try {
+    const ciFilePath = path.join(process.cwd(), '.github/workflows/ci.yml');
+    const ciFileContents = fs.readFileSync(ciFilePath, 'utf8');
+    // Parse YAML
+    const data = YAML.parse(ciFileContents);
+    // Write new Node requirements
+    data.jobs.ci.strategy.matrix.NODE_VERSION = individualVersions;
+    const newContent: string = YAML.stringify(data, null, 2);
+    await writeFile(ciFilePath, newContent);
+  } catch (e) {
+    DevLogger.error(`Failed to parse ci.yml: ${e}`);
+  }
 
   DevLogger.end('Calculation proceeded.');
 })();
