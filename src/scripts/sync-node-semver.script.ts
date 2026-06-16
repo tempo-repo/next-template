@@ -8,9 +8,7 @@ import path from 'node:path';
 import type { PackageJson } from 'type-fest';
 import { z } from 'zod';
 
-import { DevLogger } from '@scripts/impl';
-
-import { writePackageJson } from './utils/write-package-json';
+import { DevLogger, writePackageJson } from '@scripts/impl';
 
 const ignoreVersion = (version: string): string => `<${version} || >${version}`;
 
@@ -60,13 +58,10 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
 
   DevLogger.start('Calculating Node.js engine semver from dependencies');
 
-  const filenames = await readdir(
-    path.join(__dirname, '../../../node_modules'),
-    {
-      recursive: true,
-      withFileTypes: true,
-    },
-  );
+  const filenames = await readdir(process.cwd(), {
+    recursive: true,
+    withFileTypes: true,
+  });
   const semvers = filenames
     .filter(file => path.basename(file.name) === 'package.json')
     .filter(f => f.isFile())
@@ -109,32 +104,29 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
     return;
   }
 
-  await writePackageJson(
-    path.join(__dirname, '../../../package.json'),
-    prev => {
-      if (prev.engines?.node !== collapsedSemver) {
-        DevLogger.log(
-          c.gray(
-            `Previous node engine requirement was ${c.green.bold(prev.engines?.node ?? 'unset')}`,
-          ),
-        );
+  await writePackageJson(path.join(process.cwd(), './package.json'), prev => {
+    if (prev.engines?.node !== collapsedSemver) {
+      DevLogger.log(
+        c.gray(
+          `Previous node engine requirement was ${c.green.bold(prev.engines?.node ?? 'unset')}`,
+        ),
+      );
 
-        DevLogger.log(
-          c.gray(
-            `Set node engine requirement to ${c.green.bold(collapsedSemver)}`,
-          ),
-        );
-      } else {
-        DevLogger.warn(c.yellow('Nothing changed.'));
-      }
+      DevLogger.log(
+        c.gray(
+          `Set node engine requirement to ${c.green.bold(collapsedSemver)}`,
+        ),
+      );
+    } else {
+      DevLogger.warn(c.yellow('Nothing changed.'));
+    }
 
-      return deepmerge(prev, {
-        engines: {
-          node: collapsedSemver,
-        },
-      });
-    },
-  );
+    return deepmerge(prev, {
+      engines: {
+        node: collapsedSemver,
+      },
+    });
+  });
 
   DevLogger.end('Calculation proceeded.');
 })();
