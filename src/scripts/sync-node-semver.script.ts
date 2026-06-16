@@ -50,13 +50,18 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
 }
 
 (async () => {
+  DevLogger.start('Calculating Node.js engine semver from dependencies');
+
+  // Parse latest Node.js version
   const LATEST_NODE_VERSION = await parseLatestNodeVersion();
+  DevLogger.info(
+    `Latest Node.js version: ${c.green.bold(LATEST_NODE_VERSION ?? 'unknown')}`,
+  );
+
   const EXTRA_SEMVERS: string[] = [
     ...ltsOnly(),
     LATEST_NODE_VERSION ? `<${LATEST_NODE_VERSION}` : undefined,
   ].filter(s => s !== undefined);
-
-  DevLogger.start('Calculating Node.js engine semver from dependencies');
 
   const filenames = await readdir(process.cwd(), {
     recursive: true,
