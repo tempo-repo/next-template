@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import MatchMediaMock from 'vitest-matchmedia-mock';
 import { injectMocks } from 'xenopomp-essentials/vitest';
 
-import GlobalProviders from './index';
+import GlobalProviders from '@/app/providers';
 
 describe('Providers', () => {
   const matcher = new MatchMediaMock();
