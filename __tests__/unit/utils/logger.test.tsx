@@ -1,9 +1,7 @@
 import c from 'ansi-colors';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import type { RecordValue } from 'xenopomp-essentials';
 import { injectMocks } from 'xenopomp-essentials/vitest';
 
-import type { PREFIXES } from '@scripts/impl';
 import { DevLogger, LONGEST_PREFIX_LENGTH } from '@scripts/impl';
 
 describe('Logger methods', () => {
