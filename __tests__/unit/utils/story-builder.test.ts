@@ -2,8 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import SomeComponentWithProps from '@/app/layout';
 import type SomeComponent from '@/app/page';
-
-import { StoryBuilder } from '../index';
+import { StoryBuilder } from '@/utils/storybook';
 
 describe('StoryBuilder', () => {
   test('Empty metadata can be built', () => {

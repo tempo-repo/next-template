@@ -38,7 +38,7 @@ const eslintConfig = defineConfig([
         'error',
         {
           // Ensure .test.ts and .test.tsx files live ONLY in a __tests__ folder
-          '**/*.test.{ts,tsx}': '**/__tests__/',
+          '**/*.test.{ts,tsx}': '__tests__/**',
         },
       ],
     },
