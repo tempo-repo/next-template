@@ -14,7 +14,9 @@
     "vitest": "vitest --config ./configs/vitest.config.ts",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "script:run": "./src/scripts/run.sh",
+    "script:semver": "yarn script:run sync-node-semver"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.0",
