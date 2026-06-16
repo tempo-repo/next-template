@@ -6,8 +6,6 @@ import { injectMocks } from 'xenopomp-essentials/vitest';
 import type { PREFIXES } from '@scripts/impl';
 import { DevLogger, LONGEST_PREFIX_LENGTH } from '@scripts/impl';
 
-type PrefixDataEntry = RecordValue<typeof PREFIXES>;
-
 describe('Logger methods', () => {
   const spyLog = vi.spyOn(console, 'log');
   const spyError = vi.spyOn(console, 'error');
