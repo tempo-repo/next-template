@@ -3219,6 +3219,14 @@ eslint-plugin-antfu@^3.1.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-antfu/-/eslint-plugin-antfu-3.2.3.tgz#3944c977ae327186a7d95179fd56efca65f330d5"
   integrity sha512-U2fnz/H0gFPxpuC7QpaHa0Jv2AgCZ5hunp36SOP/yWo8yFzgvMh8X4pZ4uN4IKoqtBhk7G3HuVa93Urf51+sZg==
 
+eslint-plugin-check-file@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-check-file/-/eslint-plugin-check-file-3.3.1.tgz#13c842e3812026aafdfc5bece0cb9449c938971c"
+  integrity sha512-b7fDkp8Y0T9vloTYSrkMnb5Cqpk1bc6+jDQdgKIhzdwb47NmLAvMFYo3SzHOPF8u4SEsOVhmrNSbo6Sp633syg==
+  dependencies:
+    is-glob "^4.0.3"
+    micromatch "^4.0.8"
+
 eslint-plugin-command@^3.3.1:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-command/-/eslint-plugin-command-3.5.2.tgz#f2d7299be7d8d5b04f8d88c84920cf0b4ade058d"
