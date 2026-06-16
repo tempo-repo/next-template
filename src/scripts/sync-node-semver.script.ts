@@ -55,7 +55,7 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
   // Parse latest Node.js version
   const LATEST_NODE_VERSION = await parseLatestNodeVersion();
   DevLogger.info(
-    `Latest Node.js version: ${c.green.bold(LATEST_NODE_VERSION ?? 'unknown')}`,
+    `Latest available Node.js version: ${c.green.bold(LATEST_NODE_VERSION ?? 'unknown')}`,
   );
 
   const EXTRA_SEMVERS: string[] = [
