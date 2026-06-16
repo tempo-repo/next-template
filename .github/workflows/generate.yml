@@ -38,7 +38,9 @@ jobs:
           name: node-modules
           path: ./node_modules
       - name: "🧵 Calculate Node.js version semver"
-        run: yarn script:semver
+        run: |
+          ls
+          yarn script:semver
 
 #      - name: "⬆️ Push changes"
 #        uses: ad-m/github-push-action@master
