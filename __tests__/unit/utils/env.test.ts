@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, test, vi } from 'vitest';
 
-import env, { envSchema } from './index';
+import env, { envSchema } from '@/env';
 
 describe('Zod env schema', () => {
   afterEach(() => {
