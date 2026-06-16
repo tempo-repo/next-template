@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, test } from 'vitest';
 
-import { ExampleView } from './ExampleView';
+import { ExampleView } from '@/components/ui';
 
 describe('ExampleView', () => {
   afterEach(() => {
