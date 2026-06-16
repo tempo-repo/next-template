@@ -1,7 +1,6 @@
 name: Generate assets
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   generate:
