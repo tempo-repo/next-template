@@ -19,7 +19,7 @@ fi
 
 # Script exists, running actual file with tsx
 if [ -f $SCRIPT ]; then
-  tsx $SCRIPT
+  npx tsx $SCRIPT
 else
   echo "Error: script \"$TARGET\" does not exist."
   get-script-list
