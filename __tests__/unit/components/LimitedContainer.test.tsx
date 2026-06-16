@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import type { ComponentProps } from 'react';
 import { afterEach, describe, expect, test } from 'vitest';
 
-import { LimitedContainer } from '@/components/ui';
+import { LimitedContainer } from '@/components/layout';
 import type { SelectKeys } from '@/types';
 
 describe('LimitedContainer', () => {
