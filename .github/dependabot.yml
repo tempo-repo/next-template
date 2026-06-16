@@ -9,6 +9,11 @@ updates:
       - dependency-name: "*eslint*"
       - dependency-name: "*storybook*"
     groups:
+      # This dependencies can break app if they will be updated to
+      # major version
+      core-deps:
+        patterns: ["next", "next-themes", "react", "react-dom", "tailwindcss", "typescript"]
+        update-types: ["minor", "patch"]
       production-deps:
         dependency-type: "production"
       development-deps:
