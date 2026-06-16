@@ -1,6 +1,7 @@
 name: Generate assets
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 1"
 
 jobs:
   generate:
@@ -28,8 +29,8 @@ jobs:
       - name: "🧵 Calculate Node.js version semver"
         run: yarn script:semver
 
-#      - name: "⬆️ Push changes"
-#        uses: ad-m/github-push-action@master
-#        with:
-#          branch: ${{ github.ref_name }}
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: "⬆️ Push changes"
+        uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ github.ref_name }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}

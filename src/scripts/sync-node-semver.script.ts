@@ -60,10 +60,10 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
     `Latest available Node.js version: ${c.green.bold(LATEST_NODE_VERSION ?? 'unknown')}`,
   );
 
-  // TODO Add >=22.22.1
   const EXTRA_SEMVERS: string[] = [
     ...ltsOnly(),
     LATEST_NODE_VERSION ? `<${LATEST_NODE_VERSION}` : undefined,
+    '>=22.22.1',
   ].filter(s => s !== undefined);
 
   const filenames = await readdir(process.cwd(), {
