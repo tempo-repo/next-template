@@ -3,10 +3,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  deps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "⬇️ Fetch resources"
+        uses: actions/checkout@v6
+      - name: "🧩 Install Node 22"
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+      - name: "📦 Install deps"
+        run: yarn install --frozen-lockfile
+      - name: "⬆️ Upload deps as artifact"
+        run: |
+          ls
+
   generate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
       - name: "⬇️ Fetch resources"
