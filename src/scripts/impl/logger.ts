@@ -1,3 +1,5 @@
+import c from 'ansi-colors';
+
 import type { MethodType } from './logger.data';
 import { LONGEST_PREFIX_LENGTH, PREFIXES } from './logger.data';
 
@@ -31,10 +33,22 @@ export class DevLogger {
     return function (message) {
       const { raw, color, consoleMethod } = PREFIXES[method];
       const prefix: string = color(raw.padStart(LONGEST_PREFIX_LENGTH, ' '));
-      const printingMessage: string = [prefix, message]
+      const printingMessage: string = [prefix, DevLogger.getTime(), message]
         .filter(s => s !== undefined)
         .join(' ');
       console[consoleMethod](printingMessage);
     };
+  }
+
+  private static getTime(): string {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    return c.grey(`[${this.f(hours)}:${this.f(minutes)}:${this.f(seconds)}]`);
+  }
+
+  private static f(num: number): string {
+    return num.toString().padStart(2, '0');
   }
 }
