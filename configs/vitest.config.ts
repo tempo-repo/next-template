@@ -22,6 +22,8 @@ export default defineConfig({
 
         // Script files
         './src/scripts/*.script.ts',
+        './src/scripts/impl/utils/write-package-json.ts',
+        '**/SB_Preview.tsx',
       ],
     },
   },
