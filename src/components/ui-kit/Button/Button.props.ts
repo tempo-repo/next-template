@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react';
+import type { ComponentProps } from 'react';
 
-import type { FieldAlikeComponent, Morphable } from '@ui/kit';
+import type { Field, FieldAlikeComponent, Morphable } from '@ui/kit';
 
 import type { ButtonVariantsType } from './Button.variants';
 
@@ -14,4 +15,7 @@ type MapIconNames<T> = {
 type Icons = MapIconNames<Record<'leading' | 'trailing', LucideIcon>>;
 
 export type ButtonProps<C extends FieldAlikeComponent = 'button'> =
-  Morphable<C> & Icons & ButtonVariantsType;
+  Morphable<C> &
+    Icons &
+    ButtonVariantsType &
+    Pick<ComponentProps<typeof Field>, 'unstyled'>;

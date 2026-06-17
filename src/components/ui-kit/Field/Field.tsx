@@ -11,6 +11,7 @@ export function Field<C extends FieldAlikeComponent>({
   className,
   children,
   as,
+  unstyled = false,
   ...props
 }: FieldProps<C>) {
   const Component: ElementType = as ?? ('div' as C);
@@ -19,6 +20,10 @@ export function Field<C extends FieldAlikeComponent>({
       className={clsx(
         // Nullstyles
         'text-primary-font placeholder:text-primary-font/60 appearance-none bg-transparent',
+        {
+          // TODO Implement field styles
+          [``]: !unstyled,
+        },
         className,
       )}
       {...props}

@@ -12,4 +12,6 @@ export type Morphable<C extends ElementType> = ComponentProps<C> & {
   as?: C;
 };
 
-export type FieldProps<C extends FieldAlikeComponent = 'div'> = Morphable<C>;
+export type FieldProps<C extends FieldAlikeComponent = 'div'> = Morphable<C> & {
+  unstyled?: boolean;
+};
