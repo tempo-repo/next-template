@@ -36,7 +36,6 @@ const EXAMPLE_TARGET = '.env.example';
     }
 
     const [name] = item.split(/(((?<=\w+=")(.*)(?="))|((?<=\w+=)(.*)(?=)))/gi);
-    const normalizedName = name?.replace(/=/gi, '');
     const assignment: string | undefined =
       `"YOUR_${name?.toUpperCase().replace(/=$/gi, '')}"`;
 
