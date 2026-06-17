@@ -92,3 +92,15 @@ export const Preserving_space = builder.buildStory({
     </VStack>
   ),
 });
+
+export const Primary = builder.buildStory({
+  args: {
+    variant: 'primary',
+  },
+});
+
+export const Danger = builder.buildStory({
+  args: {
+    variant: 'danger',
+  },
+});
