@@ -60,6 +60,3 @@ function testMorphableComponent<C extends ElementType<{ as?: any }>>(
 
   // const elem = screen.getByTestId('morphing');
 }
-
-type SelectiveRequired<T, K extends keyof T> = Omit<T, K> &
-  Required<Pick<T, K>>;

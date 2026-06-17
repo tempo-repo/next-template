@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from '@testing-library/react';
-import { afterAll, afterEach, describe, expect, test } from 'vitest';
+import { afterEach, describe, expect, test } from 'vitest';
 import { z } from 'zod';
 
 import { For } from '@/components/layout';
