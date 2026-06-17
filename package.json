@@ -17,7 +17,11 @@
     "build-storybook": "storybook build",
     "script:run": "./src/scripts/run.sh",
     "script:semver": "yarn script:run sync-node-semver",
-    "script:pack:env": "yarn script:run pack-env"
+    "script:pack:env": "yarn script:run pack-env",
+    "diagnose:ts": "run-s diagnose:ts:*",
+    "node:extraram": "cross-env NODE_OPTIONS=--max-old-space-size=8192",
+    "diagnose:ts:trace": "yarn node:extraram tsc --generateTrace ts_trace",
+    "diagnose:ts:analyze": "yarn node:extraram @typescript/analyze-trace ts_trace"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.0",
@@ -41,10 +45,12 @@
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript/analyze-trace": "^0.11.0",
     "@vitejs/plugin-react": "^6.0.2",
     "@vitest/coverage-istanbul": "^4.1.9",
     "@voxpelli/semver-set": "^7.0.0",
     "babel-plugin-react-compiler": "1.0.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "eslint-plugin-check-file": "^3.3.1",
@@ -52,6 +58,7 @@
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "lint-staged": "^17.0.7",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.8.4",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "sass": "^1.101.0",
