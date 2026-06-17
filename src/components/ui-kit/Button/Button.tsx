@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { LucideIcon, LucideProps } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import type { ElementType } from 'react';
 
 import type { FieldAlikeComponent } from '@ui/kit';
