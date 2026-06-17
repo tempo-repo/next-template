@@ -11,7 +11,7 @@ FROM base AS builder
 COPY ./src ./src
 COPY ./public ./public
 COPY package.json yarn.lock* .env* ./
-COPY tsconfig* postcss.config.mjs next.config.ts ./
+COPY tsconfig.json tsconfig.build.json postcss.config.mjs next.config.ts ./
 COPY --from=deps /app/node_modules ./node_modules
 RUN yarn run build
 
