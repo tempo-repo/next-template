@@ -6,6 +6,7 @@ import type { FieldAlikeComponent } from '@ui/kit';
 import { Field } from '@ui/kit';
 
 import type { ButtonProps } from './Button.props';
+import { buttonVariants } from './Button.variants';
 
 /**
  * Generic button component.
@@ -21,6 +22,7 @@ export function Button<C extends FieldAlikeComponent = 'button'>({
   children,
   leadingIcon: LeadingIcon = undefined,
   trailingIcon: TrailingIcon = undefined,
+  variant,
   ...props
 }: ButtonProps<C>) {
   const Component: ElementType = as ?? ('button' as C);
@@ -31,6 +33,7 @@ export function Button<C extends FieldAlikeComponent = 'button'>({
       className={clsx(
         'cursor-pointer',
         'flex items-center justify-center gap-[0.8rem]',
+        buttonVariants({ variant }),
         className,
       )}
       {...props}

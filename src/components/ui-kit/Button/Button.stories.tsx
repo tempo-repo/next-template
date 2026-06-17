@@ -13,6 +13,12 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'danger'],
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -20,23 +26,35 @@ export default meta;
 const builder = new StoryBuilder().defineMeta(meta).defineSharedProps({
   children: 'Click me!',
   onClick: () => alert('You clicked.'),
+  variant: 'primary',
 });
 
 export const Base = builder.buildStory({});
 
 export const WithIcons = builder.buildStory({
-  render: () => (
+  render: args => (
     <VStack
       spacing={'1.2rem'}
       alignment={'center'}
     >
-      <Button leadingIcon={StarsIcon}>Click me!</Button>
+      <Button
+        leadingIcon={StarsIcon}
+        {...args}
+      >
+        Click me!
+      </Button>
 
-      <Button trailingIcon={Axe}>Click me!</Button>
+      <Button
+        trailingIcon={Axe}
+        {...args}
+      >
+        Click me!
+      </Button>
 
       <Button
         leadingIcon={StarsIcon}
         trailingIcon={Axe}
+        {...args}
       >
         Click me!
       </Button>
@@ -45,21 +63,32 @@ export const WithIcons = builder.buildStory({
 });
 
 export const Preserving_space = builder.buildStory({
-  render: () => (
+  render: args => (
     <VStack
       spacing={'1.2rem'}
       alignment={'topLeading'}
     >
-      <Button leadingIcon={StarsIcon}>Click me!</Button>
-
       <Button
-        leadingIcon={null}
-        trailingIcon={Axe}
+        leadingIcon={StarsIcon}
+        {...args}
       >
         Click me!
       </Button>
 
-      <Button leadingIcon={null}>Click me!</Button>
+      <Button
+        leadingIcon={null}
+        trailingIcon={Axe}
+        {...args}
+      >
+        Click me!
+      </Button>
+
+      <Button
+        leadingIcon={null}
+        {...args}
+      >
+        Click me!
+      </Button>
     </VStack>
   ),
 });
