@@ -7,6 +7,14 @@ import { Field } from '@ui/kit';
 
 import type { ButtonProps } from './Button.props';
 
+/**
+ * Generic button component.
+ *
+ * @example Icons
+ * <Button>Click me!</Button> // No icons detected, icons will not be rendered
+ * <Button leadingIcon={Axe}>Click me!</Button> // Icon selected and will be rendered
+ * <Button leadingIcon={null}>Click me!</Button> // Leading icon set to null. Will render transparent box to match space
+ */
 export function Button<C extends FieldAlikeComponent = 'button'>({
   as,
   className,
