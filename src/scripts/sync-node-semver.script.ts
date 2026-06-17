@@ -153,6 +153,11 @@ async function parseLatestNodeVersion(): Promise<string | undefined> {
     data.jobs.ci.strategy.matrix.NODE_VERSION = individualVersions;
     const newContent: string = YAML.stringify(data, null, 2);
     await writeFile(ciFilePath, newContent);
+    // Check if nothing changed
+    const newFileContents = fs.readFileSync(ciFilePath, 'utf8');
+    if (ciFileContents === newFileContents) {
+      DevLogger.warn(c.yellow('ci.yml is in sync already.'));
+    }
   } catch (e) {
     DevLogger.error(`Failed to parse ci.yml: ${e}`);
   }
