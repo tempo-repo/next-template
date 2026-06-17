@@ -6,7 +6,7 @@ import { StoryBuilder } from '@/utils/storybook';
 import { ZStack } from './ZStack';
 
 const meta = {
-  title: 'Layout/ZStack',
+  title: 'Layout / Stacks / ZStack',
   component: ZStack,
   tags: ['autodoc'],
   parameters: {
