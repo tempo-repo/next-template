@@ -13,7 +13,7 @@ COPY ./public ./public
 COPY package.json yarn.lock* .env* ./
 COPY tsconfig* postcss.config.mjs next.config.ts ./
 COPY --from=deps /app/node_modules ./node_modules
-RUN NODE_OPTIONS=--max-old-space-size=8192 yarn run build
+RUN yarn run build
 
 FROM base AS runner
 
