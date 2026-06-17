@@ -34,5 +34,12 @@
     "**/*.mts",
     "node_modules/storybook/dist/manager/runtime.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    ".next",
+    "coverage",
+    "storybook-static",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
 }
