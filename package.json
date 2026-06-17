@@ -16,7 +16,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "script:run": "./src/scripts/run.sh",
-    "script:semver": "yarn script:run sync-node-semver"
+    "script:semver": "yarn script:run sync-node-semver",
+    "script:pack:env": "yarn script:run pack-env"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.0",
