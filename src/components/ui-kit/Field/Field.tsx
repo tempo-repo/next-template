@@ -1,7 +1,12 @@
 import clsx from 'clsx';
 import type { ElementType } from 'react';
 
-import type { FieldAlikeComponent, FieldProps, Morphable } from './Field.props';
+import type {
+  FieldAlikeComponent,
+  FieldDedicatedProps,
+  FieldProps,
+  Morphable,
+} from './Field.props';
 
 /**
  * Global field component. Allows to share styles across all field-like
@@ -33,4 +38,4 @@ export function Field<C extends FieldAlikeComponent>({
   );
 }
 
-export type { FieldAlikeComponent, Morphable };
+export type { FieldAlikeComponent, Morphable, FieldDedicatedProps };
