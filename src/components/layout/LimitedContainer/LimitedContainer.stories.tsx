@@ -21,12 +21,10 @@ const meta = {
 
 export default meta;
 
-const builder = new StoryBuilder<typeof LimitedContainer>()
-  .defineMeta(meta)
-  .defineSharedProps({
-    className: 'bg-red-500',
-    children: <p>Container</p>,
-    align: 'center',
-  });
+const builder = new StoryBuilder().defineMeta(meta).defineSharedProps({
+  className: 'bg-red-500',
+  children: <p>Container</p>,
+  align: 'center',
+});
 
 export const Base = builder.buildStory({});

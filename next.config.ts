@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   output: 'standalone',
   typescript: {
-    ignoreBuildErrors: true,
+    tsconfigPath: './tsconfig.build.json',
   },
 };
 
