@@ -15,9 +15,15 @@ export default defineConfig({
       exclude: [
         '**/*.{stories,variants}.*',
         './src/stories/*',
+
         // TODO Maybe, should add routing files to coverage report...
         '**/{page,layout,route}.tsx',
         '**/{loading,error,not-found}.tsx',
+
+        // Script files
+        './src/scripts/*.script.ts',
+        './src/scripts/impl/utils/write-package-json.ts',
+        '**/SB_Preview.tsx',
       ],
     },
   },

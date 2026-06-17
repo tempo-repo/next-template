@@ -21,7 +21,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@root/*": ["./*"],
-      "@test/*": ["./__tests__/*"]
+      "@test/*": ["./__tests__/*"],
+      "@scripts/*": ["./src/scripts/*"]
     }
   },
   "include": [

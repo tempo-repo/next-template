@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { describe, expect, test } from 'vitest';
 
 import { Constants } from '@/constants';
-
-import { SEOBuilder } from './index';
+import { SEOBuilder } from '@/utils/seo';
 
 describe('SEOBuilder', () => {
   test('Default values', () => {
