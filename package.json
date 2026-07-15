@@ -43,7 +43,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.0.3",
-    "@vitest/coverage-istanbul": "^4.1.9",
+    "@vitest/coverage-istanbul": "^4.1.10",
     "@voxpelli/semver-set": "^7.0.0",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
@@ -62,14 +62,14 @@
     "type-fest": "^5.7.0",
     "typescript": "^6",
     "vite": "^8.1.2",
-    "vitest": "^4.1.9",
+    "vitest": "^4.1.10",
     "vitest-matchmedia-mock": "^2.0.3",
     "xenopomp-essentials": "^0.5.0"
   },
   "resolutions": {
     "typescript": "^6.0.3",
     "vite": "^8.1.2",
-    "vitest": "^4.1.9",
+    "vitest": "^4.1.10",
     "next": "^16",
     "postcss": "^8.5.10",
     "esbuild": ">=0.28.1"
